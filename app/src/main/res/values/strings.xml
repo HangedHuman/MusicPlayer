@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MusicPlayer</string>
+    <string name="mus">Музыкальный плеер</string>
+    <string name="songN">Название</string>
+    <string name="songA">Исполнитель</string>
+    <string name="close">Закрыть</string>
+</resources>

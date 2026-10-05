@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/dialogCover"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_music"/>
+
+    <TextView
+        android:id="@+id/dialogTitle"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Название"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/dialogArtist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Исполнитель"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/dialogAlbum"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Альбом"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/dialogGenre"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="6dp"
+        android:text="Жанр"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/dialogYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Год"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/dialogDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+
+        android:text="Длительность"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/btnCloseDialog"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="18dp"
+
+        android:text="@string/close"/>
+
+</LinearLayout>
