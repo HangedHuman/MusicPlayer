@@ -150,6 +150,21 @@ public class MusicService extends Service {
                         MainActivity.class
                 );
 
+        openAppIntent.setAction(Intent.ACTION_MAIN);
+        openAppIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        openAppIntent.setFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_SINGLE_TOP
+        );
+
+        PendingIntent contentIntent = PendingIntent.getActivity(
+                this,
+                0,
+                openAppIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT |
+                        PendingIntent.FLAG_IMMUTABLE
+        );
+
         PendingIntent openAppPendingIntent =
                 PendingIntent.getActivity(
                         this,
@@ -213,7 +228,7 @@ public class MusicService extends Service {
 
             builder.setLargeIcon(cover);
         }
-
+        builder.setContentIntent(contentIntent);
         return builder.build();
     }
 

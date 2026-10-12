@@ -8,20 +8,17 @@
     android:gravity="center_horizontal"
     android:background="#3A4A57">
 
-    <!-- ОБЛОЖКА -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgCover"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/cover_1"
+        android:src="@drawable/no_cover"
         app:shapeAppearanceOverlay="@style/CoverShape"
         app:strokeColor="#FFFFFF"
         app:strokeWidth="3dp"
         android:background="#222222"/>
 
-
-    <!-- НАЗВАНИЕ ТРЕКА -->
     <TextView
         android:id="@+id/txtSong"
         android:layout_width="250dp"
@@ -64,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00:00"
+        android:textSize="12sp"
         android:textColor="#FFFFFF" />
     </LinearLayout>
 

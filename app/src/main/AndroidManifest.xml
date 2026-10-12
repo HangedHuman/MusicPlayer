@@ -30,8 +30,7 @@
             android:foregroundServiceType="mediaPlayback"
             tools:ignore="ForegroundServicePermission" />
 
-        <receiver
-            android:name=".NotificationReceiver"/>
+        <receiver android:name=".NotificationReceiver"/>
     </application>
 
 </manifest>

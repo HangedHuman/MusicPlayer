@@ -63,10 +63,6 @@ public class PlayerManager {
         player.prepare();
     }
 
-    public List<Song> getPlaylist() {
-        return playlist;
-    }
-
     public Song getCurrentSong() {
         if (playlist.isEmpty()) {
             return null;
@@ -88,14 +84,6 @@ public class PlayerManager {
             player.play();
             return true;
         }
-    }
-
-    public void play() {
-        player.play();
-    }
-
-    public void pause() {
-        player.pause();
     }
 
     public void next() {

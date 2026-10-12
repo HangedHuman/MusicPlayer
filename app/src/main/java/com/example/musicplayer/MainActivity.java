@@ -38,6 +38,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_AUDIO_PERMISSION = 100;
+    private static final int REQUEST_NOTIFICATION_PERMISSION = 101;
     private ImageView cover;
     private TextView title;
 
@@ -105,41 +106,29 @@ public class MainActivity extends AppCompatActivity {
         manager = PlayerManager.getInstance(this);
         manager.getPlayer().addListener(playerListener);
         if (checkAudioPermission()) {
-
             scanMusicFolder();
             loadMusic();
-
+            checkAndRequestNotification();
         } else {
-
             requestAudioPermission();
         }
 
         setupButtons();
         setupSeekBar();
-
         startSeekBarUpdater();
-
         startMusicService();
     }
 
     private void initializeViews() {
 
         cover = findViewById(R.id.imgCover);
-
         title = findViewById(R.id.txtSong);
-
         btnPlay = findViewById(R.id.btnPlay);
-
         btnNext = findViewById(R.id.btnNext);
-
         btnPrev = findViewById(R.id.btnPrev);
-
         seekBar = findViewById(R.id.seekBar);
-
         tvCurrentTime = findViewById(R.id.tvCurrentTime);
-
         tvTotalTime = findViewById(R.id.tvTotalTime);
-
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(
@@ -186,6 +175,38 @@ public class MainActivity extends AppCompatActivity {
             );
         }
     }
+    private void checkAndRequestNotification() {
+        if (checkNotificationPermission()) {
+            android.util.Log.d("MusicPlayer", "Уведомления разрешены");
+        } else {
+            requestNotification();
+        }
+    }
+
+    private boolean checkNotificationPermission() {
+
+        if (Build.VERSION.SDK_INT >=
+                Build.VERSION_CODES.TIRAMISU)
+
+            return checkSelfPermission(
+                    Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED;
+        return true;
+    }
+    private void requestNotification() {
+
+        if (Build.VERSION.SDK_INT >=
+                Build.VERSION_CODES.TIRAMISU) {
+
+            requestPermissions(
+                    new String[]{
+                            Manifest.permission.POST_NOTIFICATIONS
+                    },
+                    REQUEST_NOTIFICATION_PERMISSION
+            );
+
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(
@@ -213,6 +234,19 @@ public class MainActivity extends AppCompatActivity {
                         "MusicPlayer",
                         "Разрешение НЕ получено"
                 );
+            }
+        }
+
+        if (requestCode == REQUEST_NOTIFICATION_PERMISSION) {
+
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                android.util.Log.e("MusicPlayer", "Уведомления разрешены");
+
+            } else {
+
+                android.util.Log.e("MusicPlayer", "Уведомления запрещены");
             }
         }
     }
